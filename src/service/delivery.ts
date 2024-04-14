@@ -7,12 +7,10 @@ const BASE_URL =
   "https://europe-west3-getgaston-test.cloudfunctions.net/hometestDeliveries";
 
 export class DeliveryService {
-  private cache: NodeCache | undefined;
+  private cache: NodeCache;
 
-  constructor(cache?: NodeCache) {
-    if (cache) {
-      this.cache = cache;
-    }
+  constructor(cache: NodeCache) {
+    this.cache = cache;
   }
 
   async calculateAverageDeliveryStatsByDateRange(
@@ -52,7 +50,7 @@ export class DeliveryService {
   private async fetchDeliveryData(date: Date): Promise<DeliveryItem[]> {
     // Using date as the cache key
     const cacheKey = format(date, "yyyy-MM-dd");
-    const cachedData = this.cache?.get(cacheKey);
+    const cachedData = this.cache.get(cacheKey);
     if (cachedData) {
       // Retrieving delivery data from cache
       return cachedData as DeliveryItem[];
