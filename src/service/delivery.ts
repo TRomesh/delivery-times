@@ -13,6 +13,12 @@ export class DeliveryService {
     this.cache = cache;
   }
 
+  /**
+   * calculate the average delivery time for a give date range
+   * @param startDate
+   * @param endDate
+   * @returns
+   */
   async calculateAverageDeliveryStatsByDateRange(
     startDate: Date,
     endDate: Date
@@ -30,6 +36,12 @@ export class DeliveryService {
     return storeAverageData;
   }
 
+  /**
+   * Fetch all delivery data for a give date range without duplicates
+   * @param startDate
+   * @param endDate
+   * @returns
+   */
   private async fetchDeliveryDataForDateRange(
     startDate: Date,
     endDate: Date
@@ -47,6 +59,11 @@ export class DeliveryService {
     return removeDuplicates(data);
   }
 
+  /**
+   * Fetch delivey data by API or Cache for a given date
+   * @param date
+   * @returns
+   */
   private async fetchDeliveryData(date: Date): Promise<DeliveryItem[]> {
     // Using date as the cache key
     const cacheKey = format(date, "yyyy-MM-dd");
@@ -62,6 +79,11 @@ export class DeliveryService {
     return deliveries;
   }
 
+  /**
+   * Fetch delivery data for a given date
+   * @param dateString
+   * @returns
+   */
   private async fetchFromApi(dateString: string): Promise<DeliveryItem[]> {
     const response = await axios.get<DeliveryItem[]>(`${BASE_URL}`, {
       params: { date: dateString },
