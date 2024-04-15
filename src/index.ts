@@ -9,6 +9,7 @@ import { cacheMiddleware } from "./middleware/cahceMiddleware";
 import { deliveryAverages } from "./controller/deliveryAverages";
 
 const app = express();
+// set cache time to 24 hours to make sure that an API call happens only once in a day
 const cache = new NodeCache({ stdTTL: 60 * 60 * 24 });
 
 app.use(morgan("dev"));
