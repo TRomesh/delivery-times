@@ -2,9 +2,7 @@ import axios from "axios";
 import { eachDayOfInterval, format } from "date-fns";
 import type NodeCache from "node-cache";
 import { groupData, removeDuplicates, storeAverages } from "../util/common";
-
-const BASE_URL =
-  "https://europe-west3-getgaston-test.cloudfunctions.net/hometestDeliveries";
+import { BASE_URL } from "../config";
 
 export class DeliveryService {
   private cache: NodeCache;

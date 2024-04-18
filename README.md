@@ -1,6 +1,6 @@
-# 🚀 Kavall delivery times
+# 🚀 Delivery times
 
-Welcome to Kavall delivery times application! This README will guide you through setting up your environment, installing dependencies, running tests, and building your application.
+Welcome to delivery times application! This README will guide you through setting up your environment, installing dependencies, running tests, and building your application.
 
 ## 🛠️ Setup
 
